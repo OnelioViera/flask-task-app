@@ -1,1 +1,7 @@
-# flask-task-app
+# Flask task App
+
+- Python
+- Flask
+- Jinja
+- Bootstrap
+
