@@ -2,15 +2,17 @@
 
 {% block content %}
 
+
 <body>
     <div class="container mt-5">
         <h1>Task Tracker</h1>
         <form action="/add_task" method="POST">
-            <div class="input-group m-3 w-50">
-                <input type="text" name="task" class="form-control" placeholder="Enter a Task &amp; Description"">
-                <div class=" input-group-append">
-                <button type="submit" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top"
-                    title="Add Task" value="Add Task">Add Task</button>
+            <div class="input-group mt-3 w-50">
+                <input type="text" name="task" class="form-control" placeholder="Enter a Task &amp; Description">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-success" data-toggle="tooltip" data-placement="top"
+                        title="Add Task" value="Add Task">Add Task</button>
+                </div>
             </div>
     </div>
     </form>
@@ -26,18 +28,27 @@
                     {% for task in tasks %}
                     <li class="list-group-item d-flex justify-content-between align-items-center mb-2">
                         {{ task }}
-                        <form action="/delete_task" method="POST" style="display: inline;">
-                            <input type="hidden" name="task" value="{{ task }}">
-                            <!-- <input type="submit" value="Delete"> -->
-                            <button type="submit" class="btn btn-outline-danger btn-sm mx-5" value="Delete"
-                                data-toggle="tooltip" data-placement="top" title="Delete Task">Delete</button>
-                        </form>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <form action="/edit_task" method="POST" style="display: inline;">
+                                <input type="hidden" name="task" value="{{ task }}">
+                                <button type="submit" class="btn btn-outline-info btn-sm mx-2" value="Edit"
+                                    data-toggle="tooltip" data-placement="top" title="Edit Task">Edit Task</button>
+
+                            </form>
+
+                            <form action="/delete_task" method="POST" style="display: inline;">
+                                <input type="hidden" name="task" value="{{ task }}">
+                                <!-- <input type="submit" value="Delete"> -->
+                                <button type="submit" class="btn btn-outline-danger btn-sm mx-2" value="Delete"
+                                    data-toggle="tooltip" data-placement="top" title="Delete Task">Delete Task</button>
+                            </form>
+                        </div>
+
                     </li>
                     {% endfor %}
                 </ul>
             </div>
         </div>
-    </div>
     </div>
 
 </body>
